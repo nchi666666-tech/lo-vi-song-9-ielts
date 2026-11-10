@@ -61,3 +61,22 @@ Chủ sở hữu nền tảng (`nchi666666@gmail.com`) có quyền bổ sung, ch
 📩 **Email Quản trị:** `nchi666666@gmail.com`  
 🔥 **Thương hiệu:** Lò Vi Sóng 9.0+ IELTS
 
+
+​HỢP ĐỒNG SỬ DỤNG DỊCH VỤ VÀ THỎA THUẬN PHÁP LÝ BẢN QUYỀN SỐ
+​Đơn vị phát hành: NGUYEN THAO CHI (nchi666666@gmail.com)
+Sản phẩm cung cấp: Phần mềm chẩn đoán tư duy "Lò Vi Sóng 9.0+ IELTS"
+Hình thức hợp đồng: Hợp đồng điện tử gia nhập dịch vụ phần mềm số (Software-as-a-Service EULA Agreement)
+​1. QUY ĐỊNH ĐĂNG NHẬP ĐA NỀN TẢNG (SOCIAL AUTHENTICATION POLICY)
+​1. Tuân thủ Tiêu chuẩn OAuth: Nền tảng cho phép người dùng mở tài khoản thông qua các cổng xác thực bên thứ ba gồm Google, Facebook, TikTok, X (Twitter), Reddit, WhatsApp và Mã OTP Số điện thoại.
+​2. Tương thích Quyền Riêng Tư Quốc Tế: Việc đăng nhập của người dùng tuân thủ theo đúng Điều khoản dịch vụ và Chính sách bảo mật riêng tư của từng nhà cung cấp hạ tầng xã hội tương ứng (Google OAuth 2.0 Policy, Meta Data Privacy Policy, TikTok Developer Terms, Twitter API Terms).
+​3. Quản lý Quyền Admin Ngầm: Tài khoản đăng nhập tương ứng với email quản trị hệ thống sẽ được tự động nhận diện ngầm để kích hoạt công cụ quản trị mà không làm ảnh hưởng tới giao diện người dùng phổ thông.
+​2. BẢN CHẤT GIAO DỊCH VÀ MÃ CHUYỂN KHOẢN ĐỘNG (DYNAMIC MEMO)
+​1. Mã Đơn Hàng Động (Dynamic Memo): Mọi giao dịch gia hạn phần mềm số đều khởi tạo một Mã nội dung chuyển khoản VietQR ngẫu nhiên duy nhất dạng LVS9 [Mã_6_Số] gắn với từng phiên giao dịch của khách hàng.
+​2. Khoản tiền Thanh toán: Khoản tiền 299.000 VNĐ chuyển qua VietQR tới Chủ tài khoản NGUYEN THAO CHI (STK: 0386235167 - MB Bank) là kinh phí gia hạn quyền sử dụng phần mềm số cá nhân có thời hạn 30 ngày.
+​3. Nghĩa vụ Thuế: Khoản thu phần mềm được kê khai và thực hiện nghĩa vụ thuế TNCN & VAT theo Thông tư 40/2021/TT-BTC của Bộ Tài chính Việt Nam.
+​3. MIỄN TRỪ TRÁCH NHIỆM BẢN QUYỀN QUỐC TẾ (DMCA & CAMBRIDGE)
+​1. Tính Độc Lập: Nền tảng Lò Vi Sóng 9.0+ IELTS là ứng dụng AI độc lập. Sản phẩm KHÔNG thuộc sở hữu, tài trợ hay liên kết chính thức với IDP Education, British Council hay Cambridge University Press.
+​2. Nội dung công khai: Hệ thống chỉ tham chiếu các tiêu chí chấm điểm công khai (IELTS Public Band Descriptors) phục vụ mục đích học thuật và nâng cao tư duy ngôn ngữ cho học viên.
+​Mọi thắc mắc về hợp đồng dịch vụ và xác nhận bản quyền, xin liên hệ:
+📩 Email Quản trị: nchi666666@gmail.com
+🏛️ Chủ tài khoản thụ hưởng hợp pháp: NGUYEN THAO CHI (MB Bank - 0386235167)
