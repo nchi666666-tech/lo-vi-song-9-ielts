@@ -1,1 +1,349 @@
+<!-- ... existing code -->
+    <!-- Top Navigation Bar -->
+    <header class="glass-panel sticky top-0 z-50 border-b border-slate-800 px-4 lg:px-8 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <div id="brandLogo" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-xl text-white shadow-lg glow-effect">
+                LM
+            </div>
+            <div>
+                <span id="brandTitle" class="font-extrabold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">
+                    IELTS Linear Mirror
+                </span>
+                <span id="brandSub" class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">Linear Thinking Diagnostic • Academic Engine</span>
+            </div>
+        </div>
 
+        <div class="flex items-center gap-3">
+            <!-- Owner / VIP Status Badge -->
+            <div id="tokenBadge" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
+                <i data-lucide="zap" class="w-3.5 h-3.5"></i> <span id="tokensLeft">1</span> lượt thử miễn phí
+            </div>
+
+            <!-- Upgrade VIP Button (Hidden if Owner/VIP) -->
+            <button id="btnUpgradeNav" onclick="openModal('paymentModal')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i> Nâng cấp VIP
+            </button>
+
+            <!-- Admin / Owner Settings Button -->
+            <button onclick="openModal('configModal')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors" title="Bảng Điều Hành Admin & Thương Hiệu">
+                <i data-lucide="shield-check" class="w-4 h-4 text-indigo-400"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left Column: Input Studio -->
+        <section class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- Hero Card -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-indigo-500 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="flex items-center justify-between mb-2">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">BAND 9 MATRIX ENGINE</span>
+                    <span id="ownerStatusTag" class="hidden px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
+                        <i data-lucide="crown" class="w-3 h-3"></i> OWNER UNLIMITED
+                    </span>
+                </div>
+                <h1 id="heroTitleDisplay" class="text-xl md:text-2xl font-bold text-slate-100 mb-2">
+                    Chẩn Đoán Lỗi Tư Duy & Mạch Logic Band 9.0
+                </h1>
+                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+                    Hệ thống phân tích đối chiếu trực tiếp bài viết của bạn với tiêu chuẩn 50+ cuốn sách IELTS Academic chọn lọc (Cambridge, Collins, Band 9 Consultants).
+                </p>
+            </div>
+<!-- ... existing code -->
+    <!-- Admin Config Modal -->
+    <div id="configModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
+        <div class="glass-panel max-w-md w-full p-6 rounded-3xl border border-slate-700 relative shadow-2xl">
+            <button onclick="closeModal('configModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <h3 class="text-base font-bold text-white mb-1 flex items-center gap-2">
+                <i data-lucide="shield" class="w-4 h-4 text-indigo-400"></i> Bảng Điều Hành Admin & Thương Hiệu
+            </h3>
+            <p class="text-xs text-slate-400 mb-4">Nhập Email Chủ sở hữu để kích hoạt đặc quyền Owner không giới hạn.</p>
+
+            <div class="space-y-3 text-xs">
+                <!-- Owner Email Authorization -->
+                <div class="bg-indigo-950/40 p-3 rounded-xl border border-indigo-800/50">
+                    <label class="block text-indigo-300 font-bold mb-1">Xác Nhận Email Chủ Sở Hữu (Admin Email)</label>
+                    <div class="flex gap-2">
+                        <input id="cfgAdminEmail" type="email" placeholder="nchi666666@gmail.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white font-mono">
+                        <button onclick="verifyOwnerAccount()" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition-colors">
+                            Kích hoạt Owner
+                        </button>
+                    </div>
+                    <span id="ownerVerifyMsg" class="text-[10px] text-slate-400 mt-1 block">Tài khoản nchi666666@gmail.com được cấp quyền VIP vĩnh viễn không mất phí.</span>
+                </div>
+
+                <!-- Custom Brand Settings -->
+                <div class="pt-2 border-t border-slate-800 space-y-2">
+                    <label class="block text-slate-300 font-semibold">Tên Thương Hiệu Của Bạn (Brand Name)</label>
+                    <input id="cfgBrandName" type="text" placeholder="Ví dụ: ACADEMIC MINDSET HUB" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+
+                <!-- VietQR Payment Destination -->
+                <div class="pt-2 border-t border-slate-800 space-y-2">
+                    <label class="block text-slate-300 font-semibold">Thông Tin Cổng VietQR Nhận Tiền Khách Nạp (299k)</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <input id="cfgBank" type="text" placeholder="Mã Ngân hàng (MB, VCB, TCB...)" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
+                        <input id="cfgAccount" type="text" placeholder="Số Tài Khoản" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
+                    </div>
+                    <input id="cfgName" type="text" placeholder="Tên Chủ Tài Khoản (Viết hoa không dấu)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
+                </div>
+
+                <button onclick="saveAllSettings()" class="w-full mt-3 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs shadow-lg transition-all">
+                    Lưu Toàn Bộ Cấu Hình Hệ Thống
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        // System State
+        let tokens = 1;
+        let isVip = false;
+        let isOwner = false;
+
+        // Default Config
+        let appConfig = {
+            ownerEmail: "nchi666666@gmail.com",
+            brandName: "IELTS Linear Mirror",
+            bank: "MB",
+            accountNo: "0987654321",
+            accountName: "CHỦ TÀI KHOẢN",
+            amount: 299000
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            lucide.createIcons();
+            loadSettingsFromStorage();
+            autoCheckOwnerSession();
+        });
+
+        // Auto verify Owner Email
+        function autoCheckOwnerSession() {
+            const savedEmail = localStorage.getItem("user_email") || "nchi666666@gmail.com";
+            if (savedEmail.toLowerCase() === appConfig.ownerEmail.toLowerCase()) {
+                activateOwnerMode();
+            }
+        }
+
+        function verifyOwnerAccount() {
+            const emailInput = document.getElementById("cfgAdminEmail").value.trim();
+            if (emailInput.toLowerCase() === appConfig.ownerEmail.toLowerCase()) {
+                localStorage.setItem("user_email", emailInput);
+                activateOwnerMode();
+                document.getElementById("ownerVerifyMsg").innerHTML = "<span class='text-emerald-400 font-bold'>✓ Đã xác minh Chủ sở hữu (nchi666666@gmail.com). Kích hoạt Super Admin!</span>";
+            } else {
+                alert("Email không khớp với tài khoản chủ sở hữu hệ thống (nchi666666@gmail.com)!");
+            }
+        }
+
+        function activateOwnerMode() {
+            isOwner = true;
+            isVip = true;
+            tokens = 999999;
+            
+            // UI Updates for Owner
+            document.getElementById("tokenBadge").className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
+            document.getElementById("tokenBadge").innerHTML = `<i data-lucide="crown" class="w-3.5 h-3.5"></i> OWNER UNLIMITED VIP`;
+            document.getElementById("btnUpgradeNav").classList.add("hidden");
+            document.getElementById("ownerStatusTag").classList.remove("hidden");
+            lucide.createIcons();
+        }
+
+        function loadSettingsFromStorage() {
+            const stored = localStorage.getItem("ielts_app_config");
+            if (stored) {
+                appConfig = JSON.parse(stored);
+            }
+            applyConfigToUI();
+        }
+
+        function applyConfigToUI() {
+            // Apply Brand Name
+            document.getElementById("brandTitle").innerText = appConfig.brandName;
+            
+            // Populate Config Form Fields
+            document.getElementById("cfgAdminEmail").value = appConfig.ownerEmail;
+            document.getElementById("cfgBrandName").value = appConfig.brandName;
+            document.getElementById("cfgBank").value = appConfig.bank;
+            document.getElementById("cfgAccount").value = appConfig.accountNo;
+            document.getElementById("cfgName").value = appConfig.accountName;
+
+            // Update QR Modal View
+            updateVietQrModal();
+        }
+
+        function saveAllSettings() {
+            appConfig.brandName = document.getElementById("cfgBrandName").value.trim() || "IELTS Linear Mirror";
+            appConfig.bank = document.getElementById("cfgBank").value.trim() || "MB";
+            appConfig.accountNo = document.getElementById("cfgAccount").value.trim() || "0987654321";
+            appConfig.accountName = document.getElementById("cfgName").value.trim() || "CHU TAI KHOAN";
+            
+            localStorage.setItem("ielts_app_config", JSON.stringify(appConfig));
+            applyConfigToUI();
+            closeModal("configModal");
+            alert("Đã lưu thành công cấu hình Thương hiệu & Cổng VietQR nhận tiền!");
+        }
+
+        function updateVietQrModal() {
+            const qrMemo = "VIP " + Math.floor(100000 + Math.random() * 900000);
+            const qrUrl = `https://img.vietqr.io/image/${appConfig.bank}-${appConfig.accountNo}-compact2.png?amount=${appConfig.amount}&addInfo=${encodeURIComponent(qrMemo)}&accountName=${encodeURIComponent(appConfig.accountName)}`;
+            
+            document.getElementById("vietQrImg").src = qrUrl;
+            document.getElementById("qrBankDisplay").innerText = `${appConfig.bank.toUpperCase()} - ${appConfig.accountNo}`;
+            document.getElementById("qrNameDisplay").innerText = appConfig.accountName;
+            document.getElementById("qrMemoDisplay").innerText = qrMemo;
+        }
+
+        function loadSamplePrompt() {
+            document.getElementById("essayTopic").value = "Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake. Discuss both views and give your opinion.";
+            document.getElementById("essayText").value = "Nowadays, many students go to university after finishing high school. Some people believe universities should teach practical skills for jobs, but others think knowledge is more important. In my opinion, I agree that universities should prepare students for work because getting a job is very necessary today. Firstly, practical skills help students find jobs easily. If they learn programming or business, companies will hire them immediately. Besides, tuition fees are very expensive, so studying useless things is a waste of money. However, learning knowledge for its own sake is also good for research. In conclusion, both have benefits but job skills are more important.";
+            updateWordCount();
+        }
+
+        document.getElementById("essayText").addEventListener("input", updateWordCount);
+
+        function updateWordCount() {
+            const text = document.getElementById("essayText").value.trim();
+            const words = text ? text.split(/\s+/).length : 0;
+            document.getElementById("wordCount").innerText = `${words} words`;
+        }
+
+        function startDiagnostic() {
+            if (!isOwner && !isVip && tokens <= 0) {
+                openModal("paymentModal");
+                return;
+            }
+
+            const topic = document.getElementById("essayTopic").value.trim();
+            const text = document.getElementById("essayText").value.trim();
+
+            if (!text) {
+                alert("Vui lòng nhập hoặc dán bài làm Writing Task 2 để tiến hành chẩn đoán!");
+                return;
+            }
+
+            // UI Transitions
+            document.getElementById("idleState").classList.add("hidden");
+            document.getElementById("resultDashboard").classList.add("hidden");
+            document.getElementById("loadingState").classList.remove("hidden");
+
+            // Deduct Free Token if not VIP/Owner
+            if (!isVip && !isOwner) {
+                tokens--;
+                document.getElementById("tokensLeft").innerText = tokens;
+            }
+
+            // Simulate AI Diagnostic API Processing
+            setTimeout(() => {
+                renderDiagnosticResults();
+            }, 2500);
+        }
+
+        function renderDiagnosticResults() {
+            document.getElementById("loadingState").classList.add("hidden");
+            document.getElementById("resultDashboard").classList.remove("hidden");
+
+            // Render Excerpts with Band 9 Reconstructions
+            const excerptsList = document.getElementById("resExcerptsList");
+            excerptsList.innerHTML = `
+                <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">COHERENCE & COHESION (CC)</span>
+                        <span class="text-slate-500 text-[10px]">Lỗi Từ Nối Cơ Học</span>
+                    </div>
+                    <p class="text-slate-300 font-mono bg-slate-900 p-2 rounded border border-slate-800/80">
+                        "Besides, tuition fees are very expensive, so studying useless things is a waste of money."
+                    </p>
+                    <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50">
+                        <span class="text-emerald-400 font-bold block mb-1">✨ Bản dựng chuẩn Band 9.0 (Linear Logic):</span>
+                        <p class="text-slate-200 leading-relaxed">
+                            "Furthermore, given the substantial financial investment required for higher education, degree programs must yield tangible career outcomes to justify their cost."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">TASK ACHIEVEMENT (TA)</span>
+                        <span class="text-slate-500 text-[10px]">Lỗi Khẳng Định Cực Đoan</span>
+                    </div>
+                    <p class="text-slate-300 font-mono bg-slate-900 p-2 rounded border border-slate-800/80">
+                        "If they learn programming or business, companies will hire them immediately."
+                    </p>
+                    <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50">
+                        <span class="text-emerald-400 font-bold block mb-1">✨ Bản dựng chuẩn Band 9.0 (Academic Hedging):</span>
+                        <p class="text-slate-200 leading-relaxed">
+                            "Acquiring industry-relevant competencies, such as software development or financial analysis, significantly enhances a graduate's employability in competitive job markets."
+                        </p>
+                    </div>
+                </div>
+            `;
+
+            // Render Interactive Micro Drill
+            const drillContainer = document.getElementById("microDrillContainer");
+            drillContainer.innerHTML = `
+                <div class="text-xs space-y-3">
+                    <p class="font-semibold text-slate-200">
+                        <strong>Câu hỏi luyện tập:</strong> Chọn câu chuyển ý chuẩn Band 8.0+ để thay thế cho đoạn khẳng định cực đoan <em>"companies will hire them immediately"</em>:
+                    </p>
+                    <div class="space-y-2">
+                        <label onclick="checkDrillAnswer(this, false)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
+                            A. Companies will definitely give them a high-paying position without delay.
+                        </label>
+                        <label onclick="checkDrillAnswer(this, true)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
+                            B. This aligns their qualifications with market demand, thereby optimizing job prospects.
+                        </label>
+                        <label onclick="checkDrillAnswer(this, false)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
+                            C. They can easily pass any job interview without trouble.
+                        </label>
+                    </div>
+                    <div id="drillFeedback" class="hidden p-2.5 rounded-xl text-[11px] font-medium"></div>
+                </div>
+            `;
+            lucide.createIcons();
+        }
+
+        function checkDrillAnswer(element, isCorrect) {
+            const feedback = document.getElementById("drillFeedback");
+            feedback.classList.remove("hidden", "bg-emerald-950/60", "text-emerald-300", "bg-rose-950/60", "text-rose-300");
+
+            if (isCorrect) {
+                element.className = "block bg-emerald-950/60 p-2.5 rounded-xl border border-emerald-500/50 text-emerald-200 font-medium";
+                feedback.classList.add("bg-emerald-950/60", "text-emerald-300");
+                feedback.innerHTML = "✓ <strong>Chính xác!</strong> Đáp án B sử dụng kỹ thuật Hedging và thuật ngữ học thuật chuẩn Band 8.0+ theo đúng ma trận tri thức sách Cambridge.";
+            } else {
+                element.className = "block bg-rose-950/60 p-2.5 rounded-xl border border-rose-500/50 text-rose-200";
+                feedback.classList.add("bg-rose-950/60", "text-rose-300");
+                feedback.innerHTML = "✗ <strong>Chưa chính xác:</strong> Đáp án này vẫn mắc lỗi khẳng định quá đà (Over-generalization). Hãy chọn đáp án B.";
+            }
+        }
+
+        function simulateSuccessfulPayment() {
+            isVip = true;
+            closeModal("paymentModal");
+            document.getElementById("tokenBadge").className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30";
+            document.getElementById("tokenBadge").innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> PRO VIP UNLIMITED`;
+            document.getElementById("btnUpgradeNav").classList.add("hidden");
+            alert("Chúc mừng! Tài khoản Pro VIP Access của bạn đã được kích hoạt thành công!");
+            lucide.createIcons();
+        }
+
+        function openModal(id) {
+            if (id === "paymentModal") updateVietQrModal();
+            document.getElementById(id).classList.remove("hidden");
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add("hidden");
+        }
+    </script>
+</body>
+      </html>
