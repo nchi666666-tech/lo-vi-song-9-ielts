@@ -1,349 +1,871 @@
-<!-- ... existing code -->
-    <!-- Top Navigation Bar -->
-    <header class="glass-panel sticky top-0 z-50 border-b border-slate-800 px-4 lg:px-8 py-3 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <div id="brandLogo" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center font-bold text-xl text-white shadow-lg glow-effect">
-                LM
-            </div>
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lò Vi Sóng 9.0+ IELTS - AI Linear Thinking Diagnostic Engine</title>
+    <!-- Built-in Standalone Styling -->
+    <style>
+        :root {
+            --bg-main: #050814;
+            --card-bg: rgba(13, 18, 36, 0.85);
+            --card-inner: rgba(18, 24, 48, 0.9);
+            --accent-indigo: #6366f1;
+            --accent-purple: #a855f7;
+            --accent-pink: #ec4899;
+            --accent-emerald: #10b981;
+            --accent-amber: #f59e0b;
+            --accent-rose: #f43f5e;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-image: 
+                radial-gradient(circle at 10% 10%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.18) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        /* Header */
+        header {
+            background: rgba(10, 14, 28, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .brand-title {
+            font-size: 20px;
+            font-weight: 900;
+            background: linear-gradient(to right, #ffffff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-subtitle {
+            font-size: 10px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .badge-token {
+            background: rgba(245, 158, 11, 0.15);
+            color: #fcd34d;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .btn-upgrade {
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.2s;
+        }
+
+        .btn-upgrade:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        .btn-auth {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border-color);
+            color: #f8fafc;
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-auth:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-icon {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Social Auth Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 16px 0;
+        }
+
+        .btn-social {
+            background: rgba(18, 24, 48, 0.9);
+            border: 1px solid var(--border-color);
+            color: #e2e8f0;
+            padding: 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-social:hover {
+            border-color: var(--accent-indigo);
+            background: rgba(99, 102, 241, 0.15);
+        }
+
+        /* Layout Main */
+        main {
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            flex: 1;
+        }
+
+        @media (min-width: 1024px) {
+            main {
+                grid-template-columns: 7fr 5fr;
+            }
+        }
+
+        /* Cards */
+        .glass-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tag-matrix {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            color: #a5b4fc;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* Form Inputs */
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #cbd5e1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-sample {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 10px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            background: rgba(5, 8, 20, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 12px 16px;
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus, textarea:focus {
+            border-color: var(--accent-indigo);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        textarea {
+            font-family: monospace;
+            resize: vertical;
+            line-height: 1.6;
+        }
+
+        .btn-scan {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-indigo), var(--accent-purple), var(--accent-pink));
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 16px;
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            transition: all 0.2s;
+            margin-top: 8px;
+        }
+
+        .btn-scan:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Right Panel Result */
+        .idle-box {
+            text-align: center;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .idle-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .score-box {
+            background: rgba(18, 24, 48, 0.9);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .score-item {
+            background: rgba(5, 8, 20, 0.6);
+            padding: 8px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .score-item span {
+            display: block;
+            font-size: 9px;
+            font-weight: 800;
+            color: var(--text-muted);
+        }
+
+        .score-item strong {
+            font-size: 14px;
+            color: #c7d2fe;
+        }
+
+        .excerpt-card {
+            background: rgba(18, 24, 48, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .excerpt-flaw {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 3px solid var(--accent-rose);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            color: #fca5a5;
+            margin: 8px 0;
+        }
+
+        .excerpt-fix {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid var(--accent-emerald);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            font-size: 12px;
+            color: #6ee7b7;
+            margin: 8px 0;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 8, 20, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            width: 100%;
+            max-width: 450px;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        footer {
+            background: rgba(10, 14, 28, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 16px 24px;
+            text-align: center;
+            font-size: 11px;
+            color: var(--text-muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="brand-container">
+            <div class="brand-logo">⚡</div>
             <div>
-                <span id="brandTitle" class="font-extrabold text-lg tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400">
-                    IELTS Linear Mirror
-                </span>
-                <span id="brandSub" class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">Linear Thinking Diagnostic • Academic Engine</span>
+                <div style="display: flex; align-items: center;">
+                    <span id="brandTitle" class="brand-title">Lò Vi Sóng 9.0+ IELTS</span>
+                </div>
+                <div id="brandSub" class="brand-subtitle">Linear Thinking Matrix • 50+ Books Distilled</div>
             </div>
         </div>
 
-        <div class="flex items-center gap-3">
-            <!-- Owner / VIP Status Badge -->
-            <div id="tokenBadge" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/30">
-                <i data-lucide="zap" class="w-3.5 h-3.5"></i> <span id="tokensLeft">1</span> lượt thử miễn phí
+        <div class="nav-actions">
+            <div id="tokenBadge" class="badge-token">
+                ✨ <span id="tokensLeft">1</span> LƯỢT THỬ MIỄN PHÍ
             </div>
-
-            <!-- Upgrade VIP Button (Hidden if Owner/VIP) -->
-            <button id="btnUpgradeNav" onclick="openModal('paymentModal')" class="px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-medium text-xs sm:text-sm shadow-md transition-all flex items-center gap-2">
-                <i data-lucide="sparkles" class="w-4 h-4"></i> Nâng cấp VIP
-            </button>
-
-            <!-- Admin / Owner Settings Button -->
-            <button onclick="openModal('configModal')" class="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors" title="Bảng Điều Hành Admin & Thương Hiệu">
-                <i data-lucide="shield-check" class="w-4 h-4 text-indigo-400"></i>
-            </button>
+            <button id="btnUpgradeNav" onclick="openModal('paymentModal')" class="btn-upgrade">👑 Nâng Cấp Gói</button>
+            <button id="userAuthBtn" onclick="openModal('authModal')" class="btn-auth">🔑 Đăng Nhập</button>
+            <button id="adminCfgBtn" onclick="openModal('configModal')" class="btn-icon hidden" title="Cài Đặt Admin">⚙️</button>
         </div>
     </header>
 
-    <!-- Main Content Area -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6">
-
-        <!-- Left Column: Input Studio -->
-        <section class="lg:col-span-7 flex flex-col gap-6">
-            
-            <!-- Hero Card -->
-            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-indigo-500 relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div class="flex items-center justify-between mb-2">
-                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">BAND 9 MATRIX ENGINE</span>
-                    <span id="ownerStatusTag" class="hidden px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 flex items-center gap-1">
-                        <i data-lucide="crown" class="w-3 h-3"></i> OWNER UNLIMITED
-                    </span>
-                </div>
-                <h1 id="heroTitleDisplay" class="text-xl md:text-2xl font-bold text-slate-100 mb-2">
-                    Chẩn Đoán Lỗi Tư Duy & Mạch Logic Band 9.0
-                </h1>
-                <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                    Hệ thống phân tích đối chiếu trực tiếp bài viết của bạn với tiêu chuẩn 50+ cuốn sách IELTS Academic chọn lọc (Cambridge, Collins, Band 9 Consultants).
+    <!-- Main Content -->
+    <main>
+        <!-- Left Panel: Essay Input Studio -->
+        <section class="glass-card">
+            <div class="hero-banner">
+                <span class="tag-matrix">LOGIC MATRIX 9.0</span>
+                <h1 id="heroTitleDisplay" style="font-size: 20px; font-weight: 900; margin: 6px 0 4px 0;">Chẩn Đoán Lỗi Tư Duy & Mạch Logic Band 9.0</h1>
+                <p style="font-size: 12px; color: var(--text-muted); line-height: 1.5;">
+                    Quét đối chiếu trực tiếp bài viết của bạn với ma trận chuẩn từ 50+ cuốn sách IELTS Academic chọn lọc.
                 </p>
             </div>
-<!-- ... existing code -->
-    <!-- Admin Config Modal -->
-    <div id="configModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-        <div class="glass-panel max-w-md w-full p-6 rounded-3xl border border-slate-700 relative shadow-2xl">
-            <button onclick="closeModal('configModal')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg">
-                <i data-lucide="x" class="w-5 h-5"></i>
-            </button>
 
-            <h3 class="text-base font-bold text-white mb-1 flex items-center gap-2">
-                <i data-lucide="shield" class="w-4 h-4 text-indigo-400"></i> Bảng Điều Hành Admin & Thương Hiệu
-            </h3>
-            <p class="text-xs text-slate-400 mb-4">Nhập Email Chủ sở hữu để kích hoạt đặc quyền Owner không giới hạn.</p>
-
-            <div class="space-y-3 text-xs">
-                <!-- Owner Email Authorization -->
-                <div class="bg-indigo-950/40 p-3 rounded-xl border border-indigo-800/50">
-                    <label class="block text-indigo-300 font-bold mb-1">Xác Nhận Email Chủ Sở Hữu (Admin Email)</label>
-                    <div class="flex gap-2">
-                        <input id="cfgAdminEmail" type="email" placeholder="nchi666666@gmail.com" class="flex-1 bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white font-mono">
-                        <button onclick="verifyOwnerAccount()" class="px-3 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition-colors">
-                            Kích hoạt Owner
-                        </button>
-                    </div>
-                    <span id="ownerVerifyMsg" class="text-[10px] text-slate-400 mt-1 block">Tài khoản nchi666666@gmail.com được cấp quyền VIP vĩnh viễn không mất phí.</span>
+            <div class="input-group">
+                <div class="input-header">
+                    <label>📝 Đề Bài Writing Task 2</label>
+                    <button onclick="loadSamplePrompt()" class="btn-sample">✨ Tải Đề Mẫu</button>
                 </div>
-
-                <!-- Custom Brand Settings -->
-                <div class="pt-2 border-t border-slate-800 space-y-2">
-                    <label class="block text-slate-300 font-semibold">Tên Thương Hiệu Của Bạn (Brand Name)</label>
-                    <input id="cfgBrandName" type="text" placeholder="Ví dụ: ACADEMIC MINDSET HUB" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
-                </div>
-
-                <!-- VietQR Payment Destination -->
-                <div class="pt-2 border-t border-slate-800 space-y-2">
-                    <label class="block text-slate-300 font-semibold">Thông Tin Cổng VietQR Nhận Tiền Khách Nạp (299k)</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <input id="cfgBank" type="text" placeholder="Mã Ngân hàng (MB, VCB, TCB...)" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
-                        <input id="cfgAccount" type="text" placeholder="Số Tài Khoản" class="bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
-                    </div>
-                    <input id="cfgName" type="text" placeholder="Tên Chủ Tài Khoản (Viết hoa không dấu)" class="w-full bg-slate-900 border border-slate-700 rounded-lg p-2.5 text-white">
-                </div>
-
-                <button onclick="saveAllSettings()" class="w-full mt-3 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs shadow-lg transition-all">
-                    Lưu Toàn Bộ Cấu Hình Hệ Thống
-                </button>
+                <input id="essayTopic" type="text" placeholder="Ví dụ: Some people think universities should focus on practical job skills...">
             </div>
+
+            <div class="input-group">
+                <div class="input-header">
+                    <label>✍️ Bài Làm (Essay Content)</label>
+                    <span id="wordCount" style="font-size: 11px; color: var(--text-muted);">0 từ</span>
+                </div>
+                <textarea id="essayText" rows="12" placeholder="Dán bài làm Academic Writing Task 2 của bạn vào đây (tối thiểu 150 từ)..."></textarea>
+            </div>
+
+            <button id="btnScan" onclick="startDiagnostic()" class="btn-scan">⚡ KÍCH HOẠT QUÉT TƯ DUY BAND-GAP</button>
+        </section>
+
+        <!-- Right Panel: Diagnostic Output -->
+        <section class="glass-card">
+            <!-- Idle State -->
+            <div id="idleState" class="idle-box">
+                <div class="idle-icon">📡</div>
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Sẵn Sàng Chẩn Đoán Logic</h3>
+                <p style="font-size: 12px; color: var(--text-muted); max-width: 280px; line-height: 1.5;">
+                    Nhập bài viết bên trái và bấm nút quét để xem bóc tách lỗ hổng tư duy & bài tập vi mô sửa lỗi.
+                </p>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="idle-box hidden">
+                <div class="idle-icon" style="animation: spin 1s linear infinite;">⏳</div>
+                <h3 style="font-size: 16px; font-weight: 800; margin-bottom: 6px;">Đang Phân Tích Ma Trận 50+ Sách...</h3>
+                <p style="font-size: 11px; color: var(--text-muted);">Scanning Coherence, Cohesion & Logic Bottlenecks...</p>
+            </div>
+
+            <!-- Result Dashboard -->
+            <div id="resultDashboard" class="hidden">
+                <div class="score-box">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="font-size: 10px; font-weight: 800; color: var(--accent-indigo);">ESTIMATED BAND SCORE</span>
+                            <h2 style="font-size: 32px; font-weight: 900; color: white;">6.0 <span style="font-size: 12px; color: var(--text-muted);">/ 9.0</span></h2>
+                        </div>
+                        <span style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: 800;">⚠️ Thủng Logic</span>
+                    </div>
+
+                    <div class="score-grid">
+                        <div class="score-item"><span>TA</span><strong>6.0</strong></div>
+                        <div class="score-item"><span>CC</span><strong>5.5</strong></div>
+                        <div class="score-item"><span>LR</span><strong>6.5</strong></div>
+                        <div class="score-item"><span>GRA</span><strong>6.0</strong></div>
+                    </div>
+                </div>
+
+                <div style="background: rgba(244, 63, 94, 0.1); border-left: 4px solid var(--accent-rose); padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 16px;">
+                    <strong style="color: #fda4af;">Lỗi Ngắn Mạch Cốt Lỗi:</strong> Bài viết dính lỗi <em>Khẳng định cực đoan (Over-generalization)</em> và <em>Dùng từ nối cơ học (Mechanical Cohesion)</em>.
+                </div>
+
+                <h4 style="font-size: 11px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 10px;">Bóc Tách Chi Tiết & Bản Dựng Band 9.0</h4>
+
+                <div id="resExcerptsList"></div>
+
+                <!-- Micro Drill Card -->
+                <div style="background: rgba(168, 85, 247, 0.1); border: 1px solid rgba(168, 85, 247, 0.3); padding: 16px; border-radius: 16px; margin-top: 16px;">
+                    <h4 style="font-size: 12px; font-weight: 800; color: #e9d5ff; margin-bottom: 8px;">🎯 Bài Tập Vi Mô 1 Phút (Micro-Drill)</h4>
+                    <div id="microDrillContainer"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <strong id="footerBrand">Lò Vi Sóng 9.0+ IELTS</strong> • Admin Support Active
+        </div>
+        <div>
+            <a href="TERMS_OF_SERVICE.md" target="_blank" style="color: var(--text-muted); text-decoration: none; margin-right: 12px;">Điều khoản dịch vụ & Pháp lý</a>
+            <a href="LICENSE" target="_blank" style="color: var(--text-muted); text-decoration: none;">Giấy phép MIT</a>
+        </div>
+    </footer>
+
+    <!-- Payment VietQR Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('paymentModal')" class="close-btn">✕</button>
+            <div style="text-align: center; margin-bottom: 16px;">
+                <span style="background: rgba(245, 158, 11, 0.2); color: #fcd34d; padding: 2px 10px; border-radius: 10px; font-size: 10px; font-weight: 800;">GÓI TẢI TRẢI NGHIỆM PRO</span>
+                <h3 style="font-size: 18px; font-weight: 900; margin-top: 6px;">Kích Hoạt Tài Khoản 30 Ngày</h3>
+                <p style="font-size: 12px; color: var(--text-muted);">299.000đ • Bản quyền phần mềm chẩn đoán</p>
+            </div>
+
+            <div style="background: white; padding: 12px; border-radius: 16px; text-align: center; margin-bottom: 16px;">
+                <img id="vietQrImg" src="" alt="Mã VietQR Động" style="width: 200px; height: 200px; object-fit: contain;">
+            </div>
+
+            <div style="background: rgba(5, 8, 20, 0.8); padding: 12px; border-radius: 12px; font-size: 11px; margin-bottom: 16px; font-family: monospace;">
+                <div>Ngân hàng: <strong id="qrBankDisplay" style="color: #a5b4fc;">MB BANK</strong></div>
+                <div>Chủ TK: <strong id="qrNameDisplay">NGUYEN THAO CHI</strong></div>
+                <div>Số TK: <strong id="qrAccountNoDisplay" style="color: #a5b4fc;">0386235167</strong></div>
+                <div>Nội dung CK riêng cho bạn: <strong id="qrMemoDisplay" style="color: #fcd34d;">LVS9 883921</strong></div>
+            </div>
+
+            <button onclick="simulateSuccessfulPayment()" class="btn-scan" style="background: linear-gradient(135deg, var(--accent-emerald), #059669);">✅ Xác Nhận Đã Chuyển Khoản Gia Hạn</button>
         </div>
     </div>
 
-    <!-- Application Script -->
-    <script>
-        // System State
-        let tokens = 1;
-        let isVip = false;
-        let isOwner = false;
+    <!-- Social Authentication Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('authModal')" class="close-btn">✕</button>
+            <div style="text-align: center; margin-bottom: 12px;">
+                <h3 style="font-size: 18px; font-weight: 900;">Đăng Nhập / Đăng Ký</h3>
+                <p style="font-size: 12px; color: var(--text-muted);">Lưu trữ tiến trình chẩn đoán tư duy của bạn</p>
+            </div>
 
-        // Default Config
-        let appConfig = {
-            ownerEmail: "nchi666666@gmail.com",
-            brandName: "IELTS Linear Mirror",
-            bank: "MB",
-            accountNo: "0987654321",
-            accountName: "CHỦ TÀI KHOẢN",
-            amount: 299000
+            <div class="social-grid">
+                <button onclick="socialLogin('Google')" class="btn-social">🌐 Google</button>
+                <button onclick="socialLogin('Facebook')" class="btn-social">📘 Facebook</button>
+                <button onclick="socialLogin('TikTok')" class="btn-social">🎵 TikTok</button>
+                <button onclick="socialLogin('X/Twitter')" class="btn-social">🐦 X (Twitter)</button>
+                <button onclick="socialLogin('Reddit')" class="btn-social">🤖 Reddit</button>
+                <button onclick="socialLogin('WhatsApp')" class="btn-social">💬 WhatsApp</button>
+            </div>
+
+            <div style="margin: 12px 0; text-align: center; font-size: 11px; color: var(--text-muted);">hoặc đăng nhập bằng số điện thoại</div>
+
+            <div class="input-group">
+                <input id="phoneInput" type="text" placeholder="+84 912 345 678">
+            </div>
+
+            <button onclick="socialLogin('Phone')" class="btn-scan" style="padding: 12px; font-size: 12px;">📲 Gửi Mã Xác Thực OTP SMS</button>
+
+            <p style="font-size: 10px; color: var(--text-muted); text-align: center; margin-top: 12px; line-height: 1.4;">
+                Khi đăng nhập, bạn đồng ý với <a href="TERMS_OF_SERVICE.md" target="_blank" style="color: #a5b4fc;">Điều khoản sử dụng</a> và Chính sách quyền riêng tư theo tiêu chuẩn OAuth của từng nền tảng Mạng xã hội.
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Configuration Modal -->
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <button onclick="closeModal('configModal')" class="close-btn">✕</button>
+            <h3 style="font-size: 16px; font-weight: 900; margin-bottom: 12px;">⚙️ Bảng Điều Hành Quản Trị</h3>
+            
+            <div class="input-group">
+                <label>Tên Thương Hiệu (Brand Name)</label>
+                <input id="cfgBrandName" type="text" placeholder="Lò Vi Sóng 9.0+ IELTS">
+            </div>
+
+            <div class="input-group">
+                <label>Tên Ngân Hàng</label>
+                <input id="cfgBankName" type="text" placeholder="MB">
+            </div>
+
+            <div class="input-group">
+                <label>Số Tài Khoản Ngân Hàng</label>
+                <input id="cfgAccountNo" type="text" placeholder="0386235167">
+            </div>
+
+            <div class="input-group">
+                <label>Tên Chủ Tài Khoản (Viết hoa)</label>
+                <input id="cfgAccountName" type="text" placeholder="NGUYEN THAO CHI">
+            </div>
+
+            <button onclick="saveAdminSettings()" class="btn-scan">💾 Lưu Cấu Hình</button>
+        </div>
+    </div>
+
+    <!-- Logic App Engine JavaScript -->
+    <script>
+        const OWNER_EMAIL = "nchi666666@gmail.com";
+
+        let state = {
+            brandName: localStorage.getItem('lo_brand_name') || "Lò Vi Sóng 9.0+ IELTS",
+            bankName: localStorage.getItem('lo_bank_name') || "MB",
+            accountNo: localStorage.getItem('lo_account_no') || "0386235167",
+            accountName: localStorage.getItem('lo_account_name') || "NGUYEN THAO CHI",
+            tokens: parseInt(localStorage.getItem('lo_tokens') || '1'),
+            isVIP: localStorage.getItem('lo_is_vip') === 'true',
+            currentUser: JSON.parse(localStorage.getItem('lo_user') || 'null'),
+            currentMemo: ""
         };
 
-        document.addEventListener("DOMContentLoaded", () => {
-            lucide.createIcons();
-            loadSettingsFromStorage();
-            autoCheckOwnerSession();
-        });
+        window.onload = function() {
+            initApp();
+            document.getElementById('essayText').addEventListener('input', function() {
+                const words = this.value.trim().split(/\s+/).filter(w => w.length > 0).length;
+                document.getElementById('wordCount').innerText = words + ' từ';
+            });
+        };
 
-        // Auto verify Owner Email
-        function autoCheckOwnerSession() {
-            const savedEmail = localStorage.getItem("user_email") || "nchi666666@gmail.com";
-            if (savedEmail.toLowerCase() === appConfig.ownerEmail.toLowerCase()) {
-                activateOwnerMode();
-            }
-        }
-
-        function verifyOwnerAccount() {
-            const emailInput = document.getElementById("cfgAdminEmail").value.trim();
-            if (emailInput.toLowerCase() === appConfig.ownerEmail.toLowerCase()) {
-                localStorage.setItem("user_email", emailInput);
-                activateOwnerMode();
-                document.getElementById("ownerVerifyMsg").innerHTML = "<span class='text-emerald-400 font-bold'>✓ Đã xác minh Chủ sở hữu (nchi666666@gmail.com). Kích hoạt Super Admin!</span>";
+        function initApp() {
+            // Check if logged in user is the system owner silently
+            if (state.currentUser && state.currentUser.email && state.currentUser.email.toLowerCase() === OWNER_EMAIL.toLowerCase()) {
+                state.isVIP = true;
+                document.getElementById('adminCfgBtn').classList.remove('hidden');
             } else {
-                alert("Email không khớp với tài khoản chủ sở hữu hệ thống (nchi666666@gmail.com)!");
+                document.getElementById('adminCfgBtn').classList.add('hidden');
             }
-        }
 
-        function activateOwnerMode() {
-            isOwner = true;
-            isVip = true;
-            tokens = 999999;
-            
-            // UI Updates for Owner
-            document.getElementById("tokenBadge").className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
-            document.getElementById("tokenBadge").innerHTML = `<i data-lucide="crown" class="w-3.5 h-3.5"></i> OWNER UNLIMITED VIP`;
-            document.getElementById("btnUpgradeNav").classList.add("hidden");
-            document.getElementById("ownerStatusTag").classList.remove("hidden");
-            lucide.createIcons();
-        }
+            document.getElementById('brandTitle').innerText = state.brandName;
+            document.getElementById('footerBrand').innerText = state.brandName;
 
-        function loadSettingsFromStorage() {
-            const stored = localStorage.getItem("ielts_app_config");
-            if (stored) {
-                appConfig = JSON.parse(stored);
+            const tokenBadge = document.getElementById('tokenBadge');
+            const authBtn = document.getElementById('userAuthBtn');
+
+            if (state.currentUser) {
+                authBtn.innerText = '👤 ' + (state.currentUser.name || 'Tài khoản');
+            } else {
+                authBtn.innerText = '🔑 Đăng Nhập';
             }
-            applyConfigToUI();
+
+            if (state.isVIP) {
+                tokenBadge.innerHTML = '✨ BẢN QUYỀN ĐÃ KÍCH HOẠT';
+                tokenBadge.style.borderColor = 'rgba(16, 185, 129, 0.4)';
+                tokenBadge.style.color = '#6ee7b7';
+            } else {
+                document.getElementById('tokensLeft').innerText = state.tokens;
+            }
+
+            // Fill Config modal
+            document.getElementById('cfgBrandName').value = state.brandName;
+            document.getElementById('cfgBankName').value = state.bankName;
+            document.getElementById('cfgAccountNo').value = state.accountNo;
+            document.getElementById('cfgAccountName').value = state.accountName;
+
+            generateDynamicOrderMemo();
         }
 
-        function applyConfigToUI() {
-            // Apply Brand Name
-            document.getElementById("brandTitle").innerText = appConfig.brandName;
-            
-            // Populate Config Form Fields
-            document.getElementById("cfgAdminEmail").value = appConfig.ownerEmail;
-            document.getElementById("cfgBrandName").value = appConfig.brandName;
-            document.getElementById("cfgBank").value = appConfig.bank;
-            document.getElementById("cfgAccount").value = appConfig.accountNo;
-            document.getElementById("cfgName").value = appConfig.accountName;
+        function generateDynamicOrderMemo() {
+            // Sinh mã nội dung chuyển khoản động duy nhất cho từng phiên khách hàng
+            const randomCode = Math.floor(100000 + Math.random() * 900000);
+            state.currentMemo = "LVS9 " + randomCode;
 
-            // Update QR Modal View
-            updateVietQrModal();
+            const qrUrl = `https://img.vietqr.io/image/${state.bankName}-${state.accountNo}-compact2.png?amount=299000&addInfo=${encodeURIComponent(state.currentMemo)}&accountName=${encodeURIComponent(state.accountName)}`;
+            
+            document.getElementById('vietQrImg').src = qrUrl;
+            document.getElementById('qrBankDisplay').innerText = state.bankName.toUpperCase();
+            document.getElementById('qrNameDisplay').innerText = state.accountName.toUpperCase();
+            document.getElementById('qrAccountNoDisplay').innerText = state.accountNo;
+            document.getElementById('qrMemoDisplay').innerText = state.currentMemo;
         }
 
-        function saveAllSettings() {
-            appConfig.brandName = document.getElementById("cfgBrandName").value.trim() || "IELTS Linear Mirror";
-            appConfig.bank = document.getElementById("cfgBank").value.trim() || "MB";
-            appConfig.accountNo = document.getElementById("cfgAccount").value.trim() || "0987654321";
-            appConfig.accountName = document.getElementById("cfgName").value.trim() || "CHU TAI KHOAN";
-            
-            localStorage.setItem("ielts_app_config", JSON.stringify(appConfig));
-            applyConfigToUI();
-            closeModal("configModal");
-            alert("Đã lưu thành công cấu hình Thương hiệu & Cổng VietQR nhận tiền!");
+        function socialLogin(provider) {
+            let email = "";
+            let name = "";
+
+            if (provider === 'Google') {
+                email = prompt("Nhập Email của bạn để đăng nhập qua Google Auth:", "user@gmail.com");
+                if (!email) return;
+                name = email.split('@')[0];
+            } else if (provider === 'Phone') {
+                const phone = document.getElementById('phoneInput').value.trim();
+                if (!phone) {
+                    alert("Vui lòng nhập số điện thoại.");
+                    return;
+                }
+                email = phone + "@mobile.auth";
+                name = phone;
+            } else {
+                name = provider + " User";
+                email = provider.toLowerCase() + "_" + Math.floor(Math.random()*10000) + "@social.auth";
+            }
+
+            state.currentUser = { email: email, name: name, provider: provider };
+            localStorage.setItem('lo_user', JSON.stringify(state.currentUser));
+
+            alert(`🎉 Đăng nhập qua ${provider} thành công!`);
+            closeModal('authModal');
+            initApp();
         }
 
-        function updateVietQrModal() {
-            const qrMemo = "VIP " + Math.floor(100000 + Math.random() * 900000);
-            const qrUrl = `https://img.vietqr.io/image/${appConfig.bank}-${appConfig.accountNo}-compact2.png?amount=${appConfig.amount}&addInfo=${encodeURIComponent(qrMemo)}&accountName=${encodeURIComponent(appConfig.accountName)}`;
-            
-            document.getElementById("vietQrImg").src = qrUrl;
-            document.getElementById("qrBankDisplay").innerText = `${appConfig.bank.toUpperCase()} - ${appConfig.accountNo}`;
-            document.getElementById("qrNameDisplay").innerText = appConfig.accountName;
-            document.getElementById("qrMemoDisplay").innerText = qrMemo;
+        function saveAdminSettings() {
+            state.brandName = document.getElementById('cfgBrandName').value.trim() || "Lò Vi Sóng 9.0+ IELTS";
+            state.bankName = document.getElementById('cfgBankName').value.trim();
+            state.accountNo = document.getElementById('cfgAccountNo').value.trim();
+            state.accountName = document.getElementById('cfgAccountName').value.trim();
+
+            localStorage.setItem('lo_brand_name', state.brandName);
+            localStorage.setItem('lo_bank_name', state.bankName);
+            localStorage.setItem('lo_account_no', state.accountNo);
+            localStorage.setItem('lo_account_name', state.accountName);
+
+            initApp();
+            closeModal('configModal');
+            alert("Đã lưu cấu hình!");
         }
 
         function loadSamplePrompt() {
-            document.getElementById("essayTopic").value = "Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake. Discuss both views and give your opinion.";
-            document.getElementById("essayText").value = "Nowadays, many students go to university after finishing high school. Some people believe universities should teach practical skills for jobs, but others think knowledge is more important. In my opinion, I agree that universities should prepare students for work because getting a job is very necessary today. Firstly, practical skills help students find jobs easily. If they learn programming or business, companies will hire them immediately. Besides, tuition fees are very expensive, so studying useless things is a waste of money. However, learning knowledge for its own sake is also good for research. In conclusion, both have benefits but job skills are more important.";
-            updateWordCount();
-        }
-
-        document.getElementById("essayText").addEventListener("input", updateWordCount);
-
-        function updateWordCount() {
-            const text = document.getElementById("essayText").value.trim();
-            const words = text ? text.split(/\s+/).length : 0;
-            document.getElementById("wordCount").innerText = `${words} words`;
+            document.getElementById('essayTopic').value = "Some people think that universities should provide graduates with the knowledge and skills needed in the workplace. Others think that the true function of a university should be to give access to knowledge for its own sake, regardless of whether the course is useful to an employer. Discuss both views and give your opinion.";
+            document.getElementById('essayText').value = "Nowadays, many people debate whether universities should focus on practical career skills or theoretical knowledge. Firstly, if students learn practical skills, they will get high-salary jobs immediately after graduation. Besides, studying theory is a waste of time because technology changes fast. However, I believe both aspects are important for personal development.";
+            document.getElementById('wordCount').innerText = "57 từ";
         }
 
         function startDiagnostic() {
-            if (!isOwner && !isVip && tokens <= 0) {
-                openModal("paymentModal");
+            const essay = document.getElementById('essayText').value.trim();
+            if (essay.length < 50) {
+                alert("Vui lòng dán bài làm Writing Task 2 dài hơn (tối thiểu 50 ký tự) để hệ thống quét.");
                 return;
             }
 
-            const topic = document.getElementById("essayTopic").value.trim();
-            const text = document.getElementById("essayText").value.trim();
-
-            if (!text) {
-                alert("Vui lòng nhập hoặc dán bài làm Writing Task 2 để tiến hành chẩn đoán!");
+            if (!state.isVIP && state.tokens <= 0) {
+                generateDynamicOrderMemo();
+                openModal('paymentModal');
                 return;
             }
 
-            // UI Transitions
-            document.getElementById("idleState").classList.add("hidden");
-            document.getElementById("resultDashboard").classList.add("hidden");
-            document.getElementById("loadingState").classList.remove("hidden");
+            document.getElementById('idleState').classList.add('hidden');
+            document.getElementById('resultDashboard').classList.add('hidden');
+            document.getElementById('loadingState').classList.remove('hidden');
 
-            // Deduct Free Token if not VIP/Owner
-            if (!isVip && !isOwner) {
-                tokens--;
-                document.getElementById("tokensLeft").innerText = tokens;
-            }
-
-            // Simulate AI Diagnostic API Processing
             setTimeout(() => {
+                document.getElementById('loadingState').classList.add('hidden');
+                document.getElementById('resultDashboard').classList.remove('hidden');
+
+                if (!state.isVIP) {
+                    state.tokens--;
+                    localStorage.setItem('lo_tokens', state.tokens.toString());
+                    initApp();
+                }
+
                 renderDiagnosticResults();
-            }, 2500);
+            }, 1500);
         }
 
         function renderDiagnosticResults() {
-            document.getElementById("loadingState").classList.add("hidden");
-            document.getElementById("resultDashboard").classList.remove("hidden");
-
-            // Render Excerpts with Band 9 Reconstructions
-            const excerptsList = document.getElementById("resExcerptsList");
-            excerptsList.innerHTML = `
-                <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/30">COHERENCE & COHESION (CC)</span>
-                        <span class="text-slate-500 text-[10px]">Lỗi Từ Nối Cơ Học</span>
-                    </div>
-                    <p class="text-slate-300 font-mono bg-slate-900 p-2 rounded border border-slate-800/80">
-                        "Besides, tuition fees are very expensive, so studying useless things is a waste of money."
-                    </p>
-                    <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50">
-                        <span class="text-emerald-400 font-bold block mb-1">✨ Bản dựng chuẩn Band 9.0 (Linear Logic):</span>
-                        <p class="text-slate-200 leading-relaxed">
-                            "Furthermore, given the substantial financial investment required for higher education, degree programs must yield tangible career outcomes to justify their cost."
-                        </p>
-                    </div>
+            const list = document.getElementById('resExcerptsList');
+            list.innerHTML = `
+                <div class="excerpt-card">
+                    <div style="font-size: 11px; font-weight: 800; color: #cbd5e1;">📍 Câu Gốc Bị Lỗi Logic Leap (Nhảy Bước):</div>
+                    <div class="excerpt-flaw">"Firstly, if students learn practical skills, they will get high-salary jobs immediately after graduation."</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #cbd5e1; margin-top: 6px;">✨ Bản Dựng Band 9.0 (Linear Thinking Matrix):</div>
+                    <div class="excerpt-fix">"Equipping students with job-specific skills enhances their immediate employability, thereby facilitating a smoother transition into high-paying corporate roles."</div>
                 </div>
 
-                <div class="bg-slate-950/70 p-4 rounded-xl border border-slate-800 text-xs space-y-2">
-                    <div class="flex items-center justify-between">
-                        <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">TASK ACHIEVEMENT (TA)</span>
-                        <span class="text-slate-500 text-[10px]">Lỗi Khẳng Định Cực Đoan</span>
-                    </div>
-                    <p class="text-slate-300 font-mono bg-slate-900 p-2 rounded border border-slate-800/80">
-                        "If they learn programming or business, companies will hire them immediately."
-                    </p>
-                    <div class="bg-emerald-950/40 p-2.5 rounded border border-emerald-900/50">
-                        <span class="text-emerald-400 font-bold block mb-1">✨ Bản dựng chuẩn Band 9.0 (Academic Hedging):</span>
-                        <p class="text-slate-200 leading-relaxed">
-                            "Acquiring industry-relevant competencies, such as software development or financial analysis, significantly enhances a graduate's employability in competitive job markets."
-                        </p>
-                    </div>
+                <div class="excerpt-card">
+                    <div style="font-size: 11px; font-weight: 800; color: #cbd5e1;">📍 Câu Gốc Bị Từ Nối Cơ Học (Mechanical Cohesion):</div>
+                    <div class="excerpt-flaw">"Besides, studying theory is a waste of time because technology changes fast."</div>
+                    <div style="font-size: 11px; font-weight: 800; color: #cbd5e1; margin-top: 6px;">✨ Bản Dựng Band 9.0 (Linear Thinking Matrix):</div>
+                    <div class="excerpt-fix">"Furthermore, an overemphasis on static theoretical concepts may render academic qualifications obsolete in rapidly evolving tech industries."</div>
                 </div>
             `;
 
-            // Render Interactive Micro Drill
-            const drillContainer = document.getElementById("microDrillContainer");
-            drillContainer.innerHTML = `
-                <div class="text-xs space-y-3">
-                    <p class="font-semibold text-slate-200">
-                        <strong>Câu hỏi luyện tập:</strong> Chọn câu chuyển ý chuẩn Band 8.0+ để thay thế cho đoạn khẳng định cực đoan <em>"companies will hire them immediately"</em>:
-                    </p>
-                    <div class="space-y-2">
-                        <label onclick="checkDrillAnswer(this, false)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
-                            A. Companies will definitely give them a high-paying position without delay.
-                        </label>
-                        <label onclick="checkDrillAnswer(this, true)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
-                            B. This aligns their qualifications with market demand, thereby optimizing job prospects.
-                        </label>
-                        <label onclick="checkDrillAnswer(this, false)" class="block bg-slate-900 p-2.5 rounded-xl border border-slate-800 hover:border-slate-700 cursor-pointer transition-colors text-slate-300">
-                            C. They can easily pass any job interview without trouble.
-                        </label>
-                    </div>
-                    <div id="drillFeedback" class="hidden p-2.5 rounded-xl text-[11px] font-medium"></div>
+            const drill = document.getElementById('microDrillContainer');
+            drill.innerHTML = `
+                <p style="font-size: 12px; color: #e2e8f0; margin-bottom: 10px;">
+                    <strong>Chọn câu viết nối tiếp hợp logic nhất cho đoạn văn trên:</strong>
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button onclick="checkDrill(this, false)" style="background: rgba(5,8,20,0.8); border: 1px solid var(--border-color); color: #cbd5e1; padding: 10px; border-radius: 10px; font-size: 11px; text-align: left; cursor: pointer;">A. Therefore, everyone should quit university to work directly.</button>
+                    <button onclick="checkDrill(this, true)" style="background: rgba(5,8,20,0.8); border: 1px solid var(--border-color); color: #cbd5e1; padding: 10px; border-radius: 10px; font-size: 11px; text-align: left; cursor: pointer;">B. Consequently, higher education institutions must recalibrate their curricula to balance academic rigor with vocational application.</button>
                 </div>
             `;
-            lucide.createIcons();
         }
 
-        function checkDrillAnswer(element, isCorrect) {
-            const feedback = document.getElementById("drillFeedback");
-            feedback.classList.remove("hidden", "bg-emerald-950/60", "text-emerald-300", "bg-rose-950/60", "text-rose-300");
-
+        function checkDrill(btn, isCorrect) {
             if (isCorrect) {
-                element.className = "block bg-emerald-950/60 p-2.5 rounded-xl border border-emerald-500/50 text-emerald-200 font-medium";
-                feedback.classList.add("bg-emerald-950/60", "text-emerald-300");
-                feedback.innerHTML = "✓ <strong>Chính xác!</strong> Đáp án B sử dụng kỹ thuật Hedging và thuật ngữ học thuật chuẩn Band 8.0+ theo đúng ma trận tri thức sách Cambridge.";
+                btn.style.background = 'rgba(16, 185, 129, 0.2)';
+                btn.style.borderColor = '#10b981';
+                btn.style.color = '#6ee7b7';
+                alert("🎉 CHÍNH XÁC! Bạn đã gắn kết thành công mạch logic chuẩn Band 9.0!");
             } else {
-                element.className = "block bg-rose-950/60 p-2.5 rounded-xl border border-rose-500/50 text-rose-200";
-                feedback.classList.add("bg-rose-950/60", "text-rose-300");
-                feedback.innerHTML = "✗ <strong>Chưa chính xác:</strong> Đáp án này vẫn mắc lỗi khẳng định quá đà (Over-generalization). Hãy chọn đáp án B.";
+                btn.style.background = 'rgba(244, 63, 94, 0.2)';
+                btn.style.borderColor = '#f43f5e';
+                btn.style.color = '#fca5a5';
+                alert("❌ Chưa chính xác. Lựa chọn này phạm lỗi Khẳng định cực đoan (Over-generalization).");
             }
         }
 
         function simulateSuccessfulPayment() {
-            isVip = true;
-            closeModal("paymentModal");
-            document.getElementById("tokenBadge").className = "flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30";
-            document.getElementById("tokenBadge").innerHTML = `<i data-lucide="sparkles" class="w-3.5 h-3.5"></i> PRO VIP UNLIMITED`;
-            document.getElementById("btnUpgradeNav").classList.add("hidden");
-            alert("Chúc mừng! Tài khoản Pro VIP Access của bạn đã được kích hoạt thành công!");
-            lucide.createIcons();
+            state.isVIP = true;
+            localStorage.setItem('lo_is_vip', 'true');
+            alert("🎉 THANH TOÁN THÀNH CÔNG! Tài khoản của bạn đã được kích hoạt sử dụng 30 ngày!");
+            initApp();
+            closeModal('paymentModal');
         }
 
         function openModal(id) {
-            if (id === "paymentModal") updateVietQrModal();
-            document.getElementById(id).classList.remove("hidden");
+            document.getElementById(id).style.display = 'flex';
         }
 
         function closeModal(id) {
-            document.getElementById(id).classList.add("hidden");
+            document.getElementById(id).style.display = 'none';
         }
     </script>
 </body>
-                </html>
+</html>
+```
